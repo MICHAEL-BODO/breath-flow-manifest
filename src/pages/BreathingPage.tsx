@@ -71,7 +71,7 @@ const BreathingPage = () => {
 
   if (selectedTechnique) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-wellness-lavender via-white to-wellness-sage p-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 p-4">
         <div className="container mx-auto">
           <Button 
             variant="ghost" 
@@ -88,7 +88,7 @@ const BreathingPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-wellness-lavender via-white to-wellness-sage p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 p-4">
       <div className="container mx-auto">
         <div className="flex items-center gap-4 mb-8">
           <Link to="/">
@@ -98,7 +98,7 @@ const BreathingPage = () => {
             </Button>
           </Link>
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-wellness-blue to-wellness-purple bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Breathing Techniques
             </h1>
             <p className="text-gray-600 mt-2">Master your breath, master your mind</p>
@@ -131,7 +131,7 @@ const BreathingPage = () => {
                     ))}
                   </div>
                   <Button 
-                    className="w-full bg-gradient-to-r from-wellness-blue to-wellness-purple hover:from-wellness-purple hover:to-wellness-blue"
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600"
                     onClick={() => setSelectedTechnique(technique.id)}
                   >
                     <Play className="w-4 h-4 mr-2" />

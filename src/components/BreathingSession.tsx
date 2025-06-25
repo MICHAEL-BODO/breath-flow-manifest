@@ -70,7 +70,7 @@ const BreathingSession = () => {
       <CardContent className="space-y-6">
         <div className="text-center">
           <div className="relative w-48 h-48 mx-auto mb-6">
-            <div className={`w-full h-full rounded-full bg-gradient-to-r from-wellness-blue to-wellness-purple flex items-center justify-center text-white text-lg font-medium ${isActive ? 'animate-breathe' : ''}`}>
+            <div className={`w-full h-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white text-lg font-medium ${isActive ? 'animate-pulse' : ''}`}>
               <div className="text-center">
                 <div className="text-3xl font-bold">{timeLeft}</div>
                 <div className="text-sm opacity-80">{phases[phase as keyof typeof phases].instruction}</div>
@@ -101,7 +101,7 @@ const BreathingSession = () => {
           <Button
             onClick={toggleSession}
             size="lg"
-            className="bg-gradient-to-r from-wellness-blue to-wellness-purple hover:from-wellness-purple hover:to-wellness-blue"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600"
           >
             {isActive ? <Pause className="w-5 h-5 mr-2" /> : <Play className="w-5 h-5 mr-2" />}
             {isActive ? 'Pause' : 'Start'}
@@ -117,7 +117,7 @@ const BreathingSession = () => {
           </Button>
         </div>
 
-        <div className="bg-wellness-lavender p-4 rounded-lg">
+        <div className="bg-blue-50 p-4 rounded-lg">
           <h4 className="font-medium mb-2">Instructions:</h4>
           <ul className="text-sm space-y-1 text-gray-600">
             <li>• Inhale through your nose for 4 seconds</li>
