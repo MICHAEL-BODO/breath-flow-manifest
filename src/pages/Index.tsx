@@ -1,68 +1,43 @@
 
-import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Brain, Heart, Sparkles, Target, TrendingUp, Wind, Zap, Play, Pause, RotateCcw } from 'lucide-react';
-import BreathingSession from '@/components/BreathingSession';
-import HabitTracker from '@/components/HabitTracker';
-import ManifestationJournal from '@/components/ManifestationJournal';
-import AIInsights from '@/components/AIInsights';
+import { Brain, Heart, Sparkles, Target, TrendingUp, Wind, Zap, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState("breathing");
-
-  const breathingTechniques = [
+  const features = [
     {
-      name: "4-7-8 Breathing",
-      description: "Inhale for 4, hold for 7, exhale for 8",
-      duration: "5 min",
-      difficulty: "Beginner",
-      benefits: ["Stress relief", "Better sleep"]
+      title: "Breathing Techniques",
+      description: "Master 7 different breathing techniques for stress relief, focus, and energy",
+      icon: Wind,
+      color: "from-wellness-blue to-wellness-teal",
+      path: "/breathing",
+      techniques: ["4-7-8 Breathing", "Box Breathing", "Pranayama", "Wim Hof Method"]
     },
     {
-      name: "Box Breathing",
-      description: "Equal counts for inhale, hold, exhale, hold",
-      duration: "8 min",
-      difficulty: "Intermediate",
-      benefits: ["Focus", "Calm mind"]
+      title: "AI Habit Tracker",
+      description: "Build lasting habits with AI-powered insights and personalized recommendations",
+      icon: Target,
+      color: "from-wellness-purple to-wellness-blue",
+      path: "/habits",
+      features: ["Smart Goal Setting", "Progress Analytics", "Habit Streaks", "AI Coaching"]
     },
     {
-      name: "Pranayama",
-      description: "Ancient yogic breathing technique",
-      duration: "10 min",
-      difficulty: "Advanced",
-      benefits: ["Energy boost", "Spiritual connection"]
+      title: "Manifestation Journal",
+      description: "Transform your thoughts into reality with guided journaling and visualization",
+      icon: Sparkles,
+      color: "from-wellness-mint to-wellness-teal",
+      path: "/journal",
+      features: ["Daily Affirmations", "Vision Board", "Gratitude Practice", "Goal Manifestation"]
     },
     {
-      name: "Belly Breathing",
-      description: "Deep diaphragmatic breathing",
-      duration: "6 min",
-      difficulty: "Beginner",
-      benefits: ["Relaxation", "Better oxygen flow"]
-    },
-    {
-      name: "Alternate Nostril",
-      description: "Balance your nervous system",
-      duration: "7 min",
-      difficulty: "Intermediate",
-      benefits: ["Mental clarity", "Emotional balance"]
-    },
-    {
-      name: "Coherent Breathing",
-      description: "5 seconds in, 5 seconds out",
-      duration: "12 min",
-      difficulty: "Beginner",
-      benefits: ["Heart rate variability", "Stress reduction"]
-    },
-    {
-      name: "Wim Hof Method",
-      description: "Power breathing technique",
-      duration: "15 min",
-      difficulty: "Advanced",
-      benefits: ["Energy", "Cold tolerance", "Immune boost"]
+      title: "AI Insights",
+      description: "Get personalized wellness recommendations based on your progress and patterns",
+      icon: TrendingUp,
+      color: "from-wellness-sage to-wellness-mint",
+      path: "/insights",
+      features: ["Progress Analytics", "Wellness Trends", "Personal Insights", "Recommendations"]
     }
   ];
 
@@ -97,89 +72,96 @@ const Index = () => {
                 <Sparkles className="w-4 h-4 mr-2" />
                 Manifestation Journal
               </Badge>
+              <Badge className="bg-wellness-sage text-white px-4 py-2 text-sm">
+                <TrendingUp className="w-4 h-4 mr-2" />
+                AI Insights
+              </Badge>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
-            <TabsTrigger value="breathing" className="flex items-center gap-2">
-              <Wind className="w-4 h-4" />
-              Breathing
-            </TabsTrigger>
-            <TabsTrigger value="habits" className="flex items-center gap-2">
-              <Target className="w-4 h-4" />
-              Habits
-            </TabsTrigger>
-            <TabsTrigger value="journal" className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4" />
-              Journal
-            </TabsTrigger>
-            <TabsTrigger value="insights" className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4" />
-              Insights
-            </TabsTrigger>
-          </TabsList>
+      {/* Features Section */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">Transform Your Life</h2>
+          <p className="text-xl text-gray-600">Explore our AI-powered wellness tools</p>
+        </div>
 
-          <TabsContent value="breathing" className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Breathing Techniques</h2>
-              <p className="text-gray-600">Master your breath, master your mind</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {breathingTechniques.map((technique, index) => (
-                <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:scale-105">
-                  <CardHeader>
-                    <CardTitle className="text-xl flex items-center justify-between">
-                      {technique.name}
-                      <Badge variant={technique.difficulty === 'Beginner' ? 'secondary' : technique.difficulty === 'Intermediate' ? 'default' : 'destructive'}>
-                        {technique.difficulty}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {features.map((feature, index) => (
+            <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden">
+              <CardHeader className={`bg-gradient-to-r ${feature.color} text-white`}>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                    <feature.icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-2xl">{feature.title}</CardTitle>
+                    <CardDescription className="text-white/80 mt-2">
+                      {feature.description}
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-2">
+                    {feature.features ? feature.features.map((item, idx) => (
+                      <Badge key={idx} variant="outline" className="text-xs justify-center">
+                        {item}
                       </Badge>
-                    </CardTitle>
-                    <CardDescription>{technique.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-500">Duration</span>
-                        <span className="font-medium">{technique.duration}</span>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {technique.benefits.map((benefit, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs">
-                            {benefit}
-                          </Badge>
-                        ))}
-                      </div>
-                      <Button className="w-full bg-gradient-to-r from-wellness-blue to-wellness-purple hover:from-wellness-purple hover:to-wellness-blue">
-                        <Play className="w-4 h-4 mr-2" />
-                        Start Session
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    )) : feature.techniques?.map((item, idx) => (
+                      <Badge key={idx} variant="outline" className="text-xs justify-center">
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
+                  <Link to={feature.path} className="block">
+                    <Button className={`w-full bg-gradient-to-r ${feature.color} hover:opacity-90 transition-opacity`}>
+                      Explore {feature.title}
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* Benefits Section */}
+      <div className="bg-gradient-to-r from-wellness-blue/10 to-wellness-purple/10 py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">Why Choose MindFlow AI?</h2>
+            <p className="text-xl text-gray-600">Science-backed techniques powered by artificial intelligence</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto bg-gradient-to-r from-wellness-blue to-wellness-purple rounded-full flex items-center justify-center mb-4">
+                <Brain className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">AI-Powered</h3>
+              <p className="text-gray-600">Personalized recommendations based on your progress and preferences</p>
             </div>
-
-            <BreathingSession />
-          </TabsContent>
-
-          <TabsContent value="habits">
-            <HabitTracker />
-          </TabsContent>
-
-          <TabsContent value="journal">
-            <ManifestationJournal />
-          </TabsContent>
-
-          <TabsContent value="insights">
-            <AIInsights />
-          </TabsContent>
-        </Tabs>
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto bg-gradient-to-r from-wellness-teal to-wellness-mint rounded-full flex items-center justify-center mb-4">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Science-Based</h3>
+              <p className="text-gray-600">Evidence-based techniques proven to improve mental and physical wellbeing</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto bg-gradient-to-r from-wellness-purple to-wellness-sage rounded-full flex items-center justify-center mb-4">
+                <Zap className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Results-Driven</h3>
+              <p className="text-gray-600">Track your progress and see measurable improvements in your wellness journey</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Footer */}
